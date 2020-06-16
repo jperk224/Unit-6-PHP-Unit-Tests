@@ -42,9 +42,9 @@ class ListingBasic
         if (isset($data['status'])) {
             $this->setStatus($data['status']);
         }
-        // if (isset($data['image'])) {
-        //     $this->setImage($data['image']);
-        // }
+        if (isset($data['image'])) {
+            $this->setImage($data['image']);
+        }
     }
 
     /**
@@ -145,25 +145,42 @@ class ListingBasic
         $this->twitter = str_replace('@', '', trim(filter_var($value, FILTER_SANITIZE_STRING)));
     }
 
-    /*
-    
+    /**    
      * Gets the local property $image
      * @return string
-     
+     */
     public function getImage()
     {
+        if(empty($this->image)) {
+            return false;
+        }
         return $this->image;
     }
 
-    
+    /**
      * Cleans up and sets the local property $image
      * @param string $value to set property
-    
+     */
     public function setImage($value)
     {
-        $this->image = trim(filter_var($value, FILTER_SANITIZE_STRING));
+        $value = trim(filter_var($value, FILTER_SANITIZE_STRING));
+        if (empty($value)) {
+            $this->image = null;
+            return;
+        }
+
+        /**
+         * Credit to christinak44 for this if-block
+         * https://github.com/christinak44/PHPUnit6_Project_6
+         * This covers the case where the listing image href may be to an external
+         * CDN.  If the href is not an external CDN and instead stored locally, build
+         * the image path from the root so it can be appropriately accessed.
+         */
+        if (substr($value, 0, 4) != 'http' || substr($value, 0, 5) != 'https') {
+            $value = BASE_URL .  '/' . $value;
+        }
+        $this->image = $value;
     }
-    */
 
     /**
      * Gets the local property $status
