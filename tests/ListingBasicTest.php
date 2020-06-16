@@ -9,6 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class ListingBasicTest extends TestCase
 {
+
+    protected $data = [
+        'id' => 1,
+        'title' => 'Test Listing Title'
+    ];
+
     /** @test */
     public function createListingWithOnlyIdAndTitle()
     {
@@ -18,14 +24,23 @@ class ListingBasicTest extends TestCase
          * Test to ensure a ListingBasic object is created with only the 
          * minimum data needed and the Id and title are as expected.
          */
-        $data = [
-            'id' => 1,
-            'title' => 'Test Listing Title'
-        ];
 
-        $listingBasic = new ListingBasic($data);
+        $listingBasic = new ListingBasic($this->data);
         $this->assertInstanceOf('ListingBasic', $listingBasic);
         $this->assertEquals(1, $listingBasic->getId());
         $this->assertEquals('Test Listing Title', $listingBasic->getTitle());
     } 
+
+    /** @test */
+    public function hasBasicStatus()
+    {
+        /**
+         * The default 'status' property for the ListingBasic object
+         * is 'basic'.  This is what should be returned when no status
+         * is passed in as part of the object data at instantiation
+         */
+
+        $listingBasic = new ListingBasic($this->data);
+        $this->assertEquals('basic', $listingBasic->getStatus());
+    }
 }

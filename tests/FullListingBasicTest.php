@@ -22,6 +22,7 @@ class FullListingBasicTest extends TestCase
             'website' => 'www.test-listing-site.com',
             'email' => 'test-email@test-listing-site.com',
             'twitter' => '@test-site',
+            'status' => 'Not-Basic',
             'image' => '',
         ];
 
@@ -29,14 +30,16 @@ class FullListingBasicTest extends TestCase
     }
 
     /** @test */
-    public function hasBasicStatus()
+    public function hasNonBasicStatusAtInstantiation()
     {
         /**
          * The default 'status' property for the ListingBasic object
          * is 'basic'.  This is what should be returned when no status
          * is passed in as part of the object data at instantiation
+         * That is tested in ListingBasicTest.php
+         * This tests instantiation with a non-basic status
          */
-        $this->assertEquals('basic', $this->listingBasic->getStatus());
+        $this->assertEquals('Not-Basic', $this->listingBasic->getStatus());
     }
     
     /** @test */
@@ -83,5 +86,34 @@ class FullListingBasicTest extends TestCase
         $this->assertEquals('http://www.test-listing-site.com', $this->listingBasic->toArray()['website']);
         $this->assertEquals('test-email@test-listing-site.com', $this->listingBasic->toArray()['email']);
         $this->assertEquals('test-site', $this->listingBasic->toArray()['twitter']);
+    }
+
+    // Additional Setter Tests
+
+    /** @test */
+    public function canSetValues()
+    {
+
+    }
+
+    /** @test */
+    public function canSetNullWebsite()
+    {
+        $this->listingBasic->setWebsite('');
+        $this->assertEquals(null, $this->listingBasic->getWebsite());
+    }
+
+    /** @test */
+    public function hasBasicStatusIfNoneGiven()
+    {
+        $this->listingBasic->setStatus('');
+        $this->assertEquals('basic', $this->listingBasic->getStatus());
+    }
+
+    /** @test */
+    public function canSetNonBasicStatus()
+    {
+        $this->listingBasic->setStatus('Not-Basic');
+        $this->assertEquals('Not-Basic', $this->listingBasic->getStatus());
     }
 }
