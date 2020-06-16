@@ -2,7 +2,7 @@
 
 class ListingBasic
 {
-    private $id, $title, $website, $email, $twitter;
+    private $id, $title, $website, $email, $twitter, $image;
     protected $status = 'basic';
 
     /**
@@ -42,9 +42,9 @@ class ListingBasic
         if (isset($data['status'])) {
             $this->setStatus($data['status']);
         }
-        if (isset($data['image'])) {
-            $this->setImage($data['image']);
-        }
+        // if (isset($data['image'])) {
+        //     $this->setImage($data['image']);
+        // }
     }
 
     /**
@@ -144,6 +144,26 @@ class ListingBasic
     {
         $this->twitter = str_replace('@', '', trim(filter_var($value, FILTER_SANITIZE_STRING)));
     }
+
+    /*
+    
+     * Gets the local property $image
+     * @return string
+     
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    
+     * Cleans up and sets the local property $image
+     * @param string $value to set property
+    
+    public function setImage($value)
+    {
+        $this->image = trim(filter_var($value, FILTER_SANITIZE_STRING));
+    }
+    */
 
     /**
      * Gets the local property $status
