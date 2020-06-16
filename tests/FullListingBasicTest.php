@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ListingBasic class tests
+ * ListingBasic class tests using global fixture
  * @author Jeff Perkinson
  */
 
@@ -67,5 +67,16 @@ class FullListingBasicTest extends TestCase
     public function hasTwitterGiven()
     {
         $this->assertEquals('test-site', $this->listingBasic->getTwitter());
+    }
+
+    /** @test */
+    public function arrayValuesMatchPropertyValuesSet()
+    {
+        /**
+         * Verify the toArray method returns an array 
+         * where each item equals the expected results for
+         *  id, title, website, email, and twitter
+         */
+
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ListingBasic class exception tests
+ * ListingBasic class individual non-global-fixture tests
  * @author Jeff Perkinson
  */
 
