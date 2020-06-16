@@ -75,8 +75,13 @@ class FullListingBasicTest extends TestCase
         /**
          * Verify the toArray method returns an array 
          * where each item equals the expected results for
-         *  id, title, website, email, and twitter
+         * id, title, website, email, and twitter
          */
 
+        $this->assertEquals(1, $this->listingBasic->toArray()['id']);
+        $this->assertEquals('Test Title', $this->listingBasic->toArray()['title']);
+        $this->assertEquals('http://www.test-listing-site.com', $this->listingBasic->toArray()['website']);
+        $this->assertEquals('test-email@test-listing-site.com', $this->listingBasic->toArray()['email']);
+        $this->assertEquals('test-site', $this->listingBasic->toArray()['twitter']);
     }
 }
