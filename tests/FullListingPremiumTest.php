@@ -7,12 +7,12 @@
 
 use PHPUnit\Framework\TestCase;
 
-class ListingPremiumTest extends TestCase
+class FullListingPremiumTest extends TestCase
 {
     // ListingPremium object for test cases
     protected $listingPremium;
 
-    // use setUp() to create a ListingBasic object to execute tests against
+    // use setUp() to create a ListingPremium object to execute tests against
     public function setUp():void
     {
         // 'status' omitted due to object's default property value
