@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ListingBasic class tests
+ * ListingBasic class exception tests
  * @author Jeff Perkinson
  */
 
@@ -10,14 +10,14 @@ use PHPUnit\Framework\TestCase;
 class ListingBasicExceptionTest extends TestCase
 {
     /** @test */
-    function emptyConstructDataThrowsException() 
+    public function emptyConstructDataThrowsException() 
     {
         $this->expectExceptionMessage('Unable to create a listing, data unavailable');
         $listingBasic = new ListingBasic();
     }
 
     /** @test */
-    function emptyIdThrowsException()
+    public function emptyIdThrowsException()
     {
         /**
         * The class constructor calls setValues() using the data array passed into the
@@ -32,7 +32,7 @@ class ListingBasicExceptionTest extends TestCase
     }
 
     /** @test */
-    function emptyTitleThrowsException()
+    public function emptyTitleThrowsException()
     {
         /**
         * The class constructor calls setValues() using the data array passed into the
