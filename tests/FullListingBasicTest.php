@@ -15,14 +15,13 @@ class FullListingBasicTest extends TestCase
     // use setUp() to create a ListingBasic object to execute tests against
     protected function setUp(): void
     {
-        // 'status' omitted due to object's default property value
         $data = [
             'id' => 1,
             'title' => 'Test Title',
             'website' => 'www.test-listing-site.com',
             'email' => 'test-email@test-listing-site.com',
             'twitter' => '@test-site',
-            'status' => 'Not-Basic',
+            'status' => 'Not-Basic',    // test instantiation w/ non-basic status
             'image' => '',
         ];
 
@@ -36,8 +35,8 @@ class FullListingBasicTest extends TestCase
          * The default 'status' property for the ListingBasic object
          * is 'basic'.  This is what should be returned when no status
          * is passed in as part of the object data at instantiation
-         * That is tested in ListingBasicTest.php
-         * This tests instantiation with a non-basic status
+         * That case is tested in ListingBasicTest.php
+         * This case tests instantiation with a non-basic status
          */
         $this->assertEquals('Not-Basic', $this->listingBasic->getStatus());
     }
@@ -89,12 +88,6 @@ class FullListingBasicTest extends TestCase
     }
 
     // Additional Setter Tests
-
-    /** @test */
-    public function canSetValues()
-    {
-
-    }
 
     /** @test */
     public function canSetNullWebsite()
